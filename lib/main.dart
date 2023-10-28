@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 240, 238, 105),
+          seedColor: Colors.blue,
         ),
         useMaterial3: true,
-        textTheme: GoogleFonts.notoSansTextTheme(
+        textTheme: GoogleFonts.openSansTextTheme(
           const TextTheme(
             displaySmall: TextStyle(
               fontSize: 16,

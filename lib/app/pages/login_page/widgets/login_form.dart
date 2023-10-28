@@ -80,14 +80,31 @@ class LoginForm extends StatelessWidget {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Not registered yet?'),
-            TextButton(
-                onPressed: BlocProvider.of<LoginPageCubit>(context).toggleLogin,
-                child: const Text('Sign up'))
-          ],
+        BlocBuilder<LoginPageCubit, LoginPageState>(
+          builder: (context, state) {
+            if (state.userType == UserType.patient) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Not registered yet?'),
+                  TextButton(
+                      onPressed:
+                          BlocProvider.of<LoginPageCubit>(context).toggleLogin,
+                      child: const Text('Sign up'))
+                ],
+              );
+            } else {
+              return const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text('Contact admin to register as a doctor'),
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ],
     );
